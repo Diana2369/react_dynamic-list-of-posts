@@ -54,25 +54,6 @@ export const App = () => {
       .finally(() => setIsLoadingPosts(false));
   }, [selectedUser]);
 
-  const handleDelete = (commentId: number) => {
-    if (!window.confirm('Are you sure you want to delete this comment?')) {
-      return;
-    }
-
-    const commentToDelete = comments.find(c => c.id === commentId);
-
-    if (!commentToDelete) {
-      return;
-    }
-
-    setComments(prev => prev.filter(c => c.id !== commentId));
-
-    fetchClient.delete(`/comments/${commentId}`).catch(() => {
-      alert('Failed to delete comment. Please try again.');
-      setComments(prev => [...prev, commentToDelete]);
-    });
-  };
-
   return (
     <main className="section">
       <div className="container">

@@ -16,7 +16,6 @@ type NewCommentFormProps = {
 export const NewCommentForm: React.FC<NewCommentFormProps> = ({
   postId,
   onAdd,
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   onClose,
 }) => {
   const [name, setName] = useState('');
@@ -203,6 +202,7 @@ export const NewCommentForm: React.FC<NewCommentFormProps> = ({
             Add
           </button>
         </div>
+
         <div className="control">
           <button
             type="reset"
@@ -210,6 +210,18 @@ export const NewCommentForm: React.FC<NewCommentFormProps> = ({
             onClick={handleReset}
             disabled={isSubmitting}
             data-cy="ClearButton"
+          >
+            Clear
+          </button>
+        </div>
+
+        <div className="control">
+          <button
+            type="button"
+            className="button is-danger is-light"
+            onClick={onClose}
+            disabled={isSubmitting}
+            data-cy="CloseButton"
           >
             Cancel
           </button>
